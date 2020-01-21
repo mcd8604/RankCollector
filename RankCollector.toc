@@ -17,7 +17,7 @@
 Libs\embeds.xml
 Localizations\embeds.xml
 
-RankCollector.lua
+honorspy.lua
 GUI.lua
 settings.lua
 export.lua
