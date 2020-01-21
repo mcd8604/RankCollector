@@ -37,7 +37,7 @@ function RankCollector:OnInitialize()
 	--self:RegisterEvent("CHAT_MSG_COMBAT_HONOR_GAIN", CHAT_MSG_COMBAT_HONOR_GAIN_EVENT);
 	--ChatFrame_AddMessageEventFilter("CHAT_MSG_COMBAT_HONOR_GAIN", CHAT_MSG_COMBAT_HONOR_GAIN_FILTER);
 	self:RegisterComm(commPrefix, "OnCommReceive")
-	--self:RegisterEvent("PLAYER_DEAD");
+	self:RegisterEvent("PLAYER_DEAD");
 	ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", FAKE_PLAYERS_FILTER);
 
 	DrawMinimapIcon();
@@ -111,9 +111,6 @@ function RankCollector:INSPECT_HONOR_UPDATE()
 			player.RP = math.ceil((player.rank-2) * 5000 + player.rankProgress * 5000)
 		elseif (player.rank == 2) then
 			player.RP = math.ceil(player.rankProgress * 3000 + 2000)
-		end
-		if (lastPlayer and lastPlayer.honor == thisWeekHonor and lastPlayer.name ~= inspectedPlayerName) then
-			return
 		end
 		lastPlayer = {name = inspectedPlayerName, honor = thisWeekHonor}
 		store_player(inspectedPlayerName, player)
@@ -273,8 +270,8 @@ function RankCollector:Estimate(playerOfInterest)
 	local standing = -1;
 	local t = RankCollector:BuildStandingsTable()
 	local avg_lastchecked = 0;
-	--local pool_size = #t;
-	local pool_size = 4700;
+	local pool_size = #t;
+	--local pool_size = 4700;
 
 	for i = 1, pool_size do
 		if (playerOfInterest == t[i][1]) then
@@ -367,9 +364,10 @@ function class_exist(className)
 end
 
 function playerIsValid(player)
-	if (not player.last_checked or type(player.last_checked) ~= "number" or player.last_checked < RankCollector.db.factionrealm.last_reset + 24*60*60
+	if (not player.last_checked or type(player.last_checked) ~= "number" 
+		--or player.last_checked < RankCollector.db.factionrealm.last_reset + 24*60*60
 		or player.last_checked > GetServerTime()
-		or not player.thisWeekHonor or type(player.thisWeekHonor) ~= "number" or player.thisWeekHonor == 0
+		--or not player.thisWeekHonor or type(player.thisWeekHonor) ~= "number" or player.thisWeekHonor == 0
 		or not player.lastWeekHonor or type(player.lastWeekHonor) ~= "number"
 		or not player.standing or type(player.standing) ~= "number"
 		or not player.RP or type(player.RP) ~= "number"
@@ -377,6 +375,7 @@ function playerIsValid(player)
 		or not player.rank or type(player.rank) ~= "number"
 		or not player.class or not class_exist(player.class)
 		) then
+		print(format('Ignoring Player: %s)', player.name))
 		return false
 	end
 	return true
@@ -395,6 +394,7 @@ function store_player(playerName, player)
 	local player = table.copy(player);
 	local localPlayer = RankCollector.db.factionrealm.currentStandings[playerName];
 	if (localPlayer == nil or localPlayer.last_checked < player.last_checked) then
+		print(format('Storing Player: %s', playerName))
 		RankCollector.db.factionrealm.currentStandings[playerName] = player;
 		RankCollector:TestNextFakePlayer();
 	end

@@ -10,14 +10,14 @@
 ## Version: 1.7.1
 
 ## X-Category: Battlegrounds/PvP
-## SavedVariables: RankCollector
+## SavedVariables: RankCollectorDB
 
 ## X-Curse-Project-ID: 348370
 
 Libs\embeds.xml
 Localizations\embeds.xml
 
-honorspy.lua
+RankCollector.lua
 GUI.lua
 settings.lua
 export.lua
