@@ -1,23 +1,23 @@
 ## Interface: 11303
-## Title: HonorSpy
+## Title: RankCollector
 
 ## Notes: Records PvP standings of all players
 ## Notes-ruRU: Записывает PvP позиции всех игроков
 ## Notes-zhCN: PvP 荣誉监视榜,用于收集并监视服务器荣誉角色并排行
 
-## Author: kakysha
+## Author: mdemauro
 ## OptionalDeps: Ace3
 ## Version: 1.7.1
 
 ## X-Category: Battlegrounds/PvP
-## SavedVariables: HonorSpyDB
+## SavedVariables: RankCollector
 
 ## X-Curse-Project-ID: 348370
 
 Libs\embeds.xml
 Localizations\embeds.xml
 
-honorspy.lua
+RankCollector.lua
 GUI.lua
 settings.lua
 export.lua

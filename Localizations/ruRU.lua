@@ -1,8 +1,8 @@
-local L = LibStub("AceLocale-3.0"):NewLocale("HonorSpy", "ruRU")
+local L = LibStub("AceLocale-3.0"):NewLocale("RankCollector", "ruRU")
 
 if L then
 
-L["HonorSpy Standings"] = "Таблица HonorSpy"
+L["RankCollector Standings"] = "Таблица RankCollector"
 L["Name"] = "Игрок"
 L["Honor"] = "Честь"
 L["ThisWeekHonor"] = "ЧестьНаЭтойНеделе"
@@ -20,7 +20,7 @@ L["s"] = "с"
 L["Weekly data was reset"] = "Еженедельные данные были сброшены"
 L["This will purge ALL addon data, you sure?"] = "Это удалит ВСЕ данные аддона, вы уверены?"
 L["All data was purged"] = "Все данные были удалены"
-L["Show HonorSpy Standings"] = "Показать HonorSpy позиции"
+L["Show RankCollector Standings"] = "Показать RankCollector позиции"
 L["Report specific player standings"] = "Отчёт по другому игроку"
 L["player_name"] = "player_name"
 L["Player %s not found in table"] = "Игрок %s не найден в таблице"
@@ -36,7 +36,7 @@ L["Current RP"] = "Текущие ОР"
 L["Next Week RP"] = "ОР на след. неделе"
 L["Current Rank"] = "Текущий ранг"
 L["Next Week Rank"] = "Будущий ранг"
-L["HonorSpy Options"] = "Настройки HonorSpy"
+L["RankCollector Options"] = "Настройки RankCollector"
 L["Sunday"] = "Воскресенье"
 L["Monday"] = "Понедельник"
 L["Tuesday"] = "Вторник"
@@ -60,9 +60,9 @@ L["<EP>"] = "<EP>"
 L["Limit"] = "Лимит строк"
 L['You have 0 honor or not enough HKs, min = 15'] = "У вас 0 хонора или недостаточно убийств, мин = 15"
 L["Hide Minimap Button"] = "Скрыть иконку на миникарте"
-L["Use \'/hs show\' to bring HonorSpy window, if hidden. Will Reload UI on change."] = "Введите \'/hs show' чтобы открыть окно HonorSpy, если скрыли. UI будет перезагружен."
+L["Use \'/hs show\' to bring RankCollector window, if hidden. Will Reload UI on change."] = "Введите \'/hs show' чтобы открыть окно RankCollector, если скрыли. UI будет перезагружен."
 L["Estimated Honor"] = "Ожидаемый Хонор"
-L["Sync over GUILD instead of separate 'HonorSpySync' channel"] = "Синхронизировать с Гильдией, вместо отдельного канала HonorSpySync"
-L["You won't join 'HonorSpySync' channel anymore and will only sync data with your guildmates. Relog after changing this."] = "Вы больше не будете подключаться к каналу HonorSpySync, а будете синхронизировать данные только с согильдийцами. Требуется релог при изменении."
+L["Sync over GUILD instead of separate 'RankCollectorSync' channel"] = "Синхронизировать с Гильдией, вместо отдельного канала RankCollectorSync"
+L["You won't join 'RankCollectorSync' channel anymore and will only sync data with your guildmates. Relog after changing this."] = "Вы больше не будете подключаться к каналу RankCollectorSync, а будете синхронизировать данные только с согильдийцами. Требуется релог при изменении."
 
 end

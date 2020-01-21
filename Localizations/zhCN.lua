@@ -1,8 +1,8 @@
-local L = LibStub("AceLocale-3.0"):NewLocale("HonorSpy", "zhCN") -- translate by Qcat
+local L = LibStub("AceLocale-3.0"):NewLocale("RankCollector", "zhCN") -- translate by Qcat
 
 if L then
 
-L["HonorSpy Standings"] = "荣誉监视榜"
+L["RankCollector Standings"] = "荣誉监视榜"
 L["Name"] = "名字"
 L["Honor"] = "荣誉"
 L["ThisWeekHonor"] = "本周荣誉"
@@ -20,7 +20,7 @@ L["s"] = "秒"
 L["Weekly data was reset"] = "每周数据被重置"
 L["This will purge ALL addon data, you sure?"] = "这将清除所有插件数据，你确定吗？"
 L["All data was purged"] = "所有数据被清除"
-L["Show HonorSpy Standings"] = "显示荣誉监视榜"
+L["Show RankCollector Standings"] = "显示荣誉监视榜"
 L["Report specific player standings"] = "报告指定玩家排名"
 L["player_name"] = "玩家名字"
 L["Player %s not found in table"] = "玩家%s未在表单里"
@@ -36,7 +36,7 @@ L["Current RP"] = "当前经验"
 L["Next Week RP"] = "下周经验"
 L["Current Rank"] = "当前Rank"
 L["Next Week Rank"] = "下周Rank"
-L["HonorSpy Options"] = "HonorSpy 荣誉监视榜选项"
+L["RankCollector Options"] = "RankCollector 荣誉监视榜选项"
 L["Sunday"] = "星期日"
 L["Monday"] = "星期一"
 L["Tuesday"] = "星期二"
@@ -60,9 +60,9 @@ L["<EP>"] = "<EP>"
 L["Limit"] = "限制"
 L['You have 0 honor or not enough HKs, min = 15'] = "您有0荣誉或没有荣誉击杀, 最低需要 = 15"
 L["Hide Minimap Button"] = "隐藏小地图按钮"
-L["Use \'/hs show\' to bring HonorSpy window, if hidden. Will Reload UI on change."] = "输入 \'/hs show' 显示 HonorSpy 窗口, 更改时将重置UI"
+L["Use \'/hs show\' to bring RankCollector window, if hidden. Will Reload UI on change."] = "输入 \'/hs show' 显示 RankCollector 窗口, 更改时将重置UI"
 L["Estimated Honor"] = "荣誉预估"
-L["Sync over GUILD instead of separate 'HonorSpySync' channel"] = "通过公会同步而不是单独的“HonorSpySync”频道"
-L["You won't join 'HonorSpySync' channel anymore and will only sync data with your guildmates. Relog after changing this."] = "你将不再加入‘HonorSpySync’频道，并且只与你的公会成员同步数据。更改后请重载登陆"
+L["Sync over GUILD instead of separate 'RankCollectorSync' channel"] = "通过公会同步而不是单独的“RankCollectorSync”频道"
+L["You won't join 'RankCollectorSync' channel anymore and will only sync data with your guildmates. Relog after changing this."] = "你将不再加入‘RankCollectorSync’频道，并且只与你的公会成员同步数据。更改后请重载登陆"
 
 end

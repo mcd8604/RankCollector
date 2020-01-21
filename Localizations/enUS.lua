@@ -1,8 +1,8 @@
-local L = LibStub("AceLocale-3.0"):NewLocale("HonorSpy", "enUS", true)
+local L = LibStub("AceLocale-3.0"):NewLocale("RankCollector", "enUS", true)
 
 if L then
 
-L["HonorSpy Standings"] = true
+L["RankCollector Standings"] = true
 L["Name"] = true
 L["Honor"] = true
 L["ThisWeekHonor"] = true
@@ -20,7 +20,7 @@ L["s"] = true
 L["Weekly data was reset"] = true
 L["This will purge ALL addon data, you sure?"] = true
 L["All data was purged"] = true
-L["Show HonorSpy Standings"] = true
+L["Show RankCollector Standings"] = true
 L["Report specific player standings"] = true
 L["player_name"] = true
 L["Player %s not found in table"] = true
@@ -36,7 +36,7 @@ L["Current RP"] = true
 L["Next Week RP"] = true
 L["Current Rank"] = true
 L["Next Week Rank"] = true
-L["HonorSpy Options"] = true
+L["RankCollector Options"] = true
 L["Sunday"] = true
 L["Monday"] = true
 L["Tuesday"] = true
@@ -60,9 +60,9 @@ L["<EP>"] = true
 L["Limit"] = true
 L['You have 0 honor or not enough HKs, min = 15'] = true
 L["Hide Minimap Button"] = true
-L["Use \'/hs show\' to bring HonorSpy window, if hidden. Will Reload UI on change."] = true
+L["Use \'/hs show\' to bring RankCollector window, if hidden. Will Reload UI on change."] = true
 L["Estimated Honor"] = true
-L["Sync over GUILD instead of separate 'HonorSpySync' channel"] = true
-L["You won't join 'HonorSpySync' channel anymore and will only sync data with your guildmates. Relog after changing this."] = true
+L["Sync over GUILD instead of separate 'RankCollectorSync' channel"] = true
+L["You won't join 'RankCollectorSync' channel anymore and will only sync data with your guildmates. Relog after changing this."] = true
 
 end

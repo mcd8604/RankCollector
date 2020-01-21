@@ -1,8 +1,8 @@
 local GUI = {}
-_G["HonorSpyGUI"] = GUI
+_G["RankCollectorGUI"] = GUI
 
 local AceGUI = LibStub("AceGUI-3.0")
-local L = LibStub("AceLocale-3.0"):GetLocale("HonorSpy", true)
+local L = LibStub("AceLocale-3.0"):GetLocale("RankCollector", true)
 
 LibStub("AceHook-3.0"):Embed(GUI)
 
@@ -25,15 +25,15 @@ local playerName = UnitName("player")
 
 function GUI:Show(skipUpdate, sort_column)
 	if (not skipUpdate) then
-		HonorSpy:UpdatePlayerData(function()
+		RankCollector:UpdatePlayerData(function()
 			if (mainFrame:IsShown()) then
 				GUI:Show(true, sort_column)
 			end
 		end)
 	end
 	
-	rows = HonorSpy:BuildStandingsTable(sort_column)
-	local brk = HonorSpy:GetBrackets(#rows)
+	rows = RankCollector:BuildStandingsTable(sort_column)
+	local brk = RankCollector:GetBrackets(#rows)
 	for i = 1, #brk do
 		for j = brk[i], (brk[i+1] or 0)+1, -1 do
 			brackets[j] = i
@@ -43,10 +43,10 @@ function GUI:Show(skipUpdate, sort_column)
 	local poolSizeText = format(L['Pool Size'] .. ': %d ', #rows)
 	statusLine:SetText('|cff777777/hs show|r                                                       ' .. poolSizeText .. '                                             |cff777777/hs search nickname|r')
 
-	local pool_size, standing, bracket, RP, EstRP, Rank, Progress, EstRank, EstProgress = HonorSpy:Estimate()
+	local pool_size, standing, bracket, RP, EstRP, Rank, Progress, EstRank, EstProgress = RankCollector:Estimate()
 	if (standing) then
-		local playerText = colorize(L['Progress of'], "GREY") .. ' ' .. colorize(playerName, HonorSpy.db.factionrealm.currentStandings[playerName].class)
-		playerText = playerText .. ", " .. colorize(L['Estimated Honor'] .. ': ', "GREY") .. colorize(HonorSpy.db.char.estimated_honor, "ORANGE")
+		local playerText = colorize(L['Progress of'], "GREY") .. ' ' .. colorize(playerName, RankCollector.db.factionrealm.currentStandings[playerName].class)
+		playerText = playerText .. ", " .. colorize(L['Estimated Honor'] .. ': ', "GREY") .. colorize(RankCollector.db.char.estimated_honor, "ORANGE")
 		playerText = playerText .. '\n' .. colorize(L['Standing'] .. ':', "GREY") .. colorize(standing, "ORANGE")
 		playerText = playerText .. ' ' .. colorize(L['Bracket'] .. ':', "GREY") .. colorize(bracket, "ORANGE")
 		playerText = playerText .. ' ' .. colorize(L['Current Rank'] .. ':', "GREY") .. colorize(format('%d (%d%%)', Rank, Progress), "ORANGE")
@@ -56,7 +56,7 @@ function GUI:Show(skipUpdate, sort_column)
 		scroll.scrollBar:SetValue(standing * scroll.buttonHeight-200)
 		scroll.scrollBar.thumbTexture:Show()
 	else
-		playerStandings:SetText(format('%s %s, %s: %s\n%s\n', L['Progress of'], playerName, colorize(L['Estimated Honor'], "GREY"), colorize(HonorSpy.db.char.estimated_honor, "ORANGE"), L['You have 0 honor or not enough HKs, min = 15']))
+		playerStandings:SetText(format('%s %s, %s: %s\n%s\n', L['Progress of'], playerName, colorize(L['Estimated Honor'], "GREY"), colorize(RankCollector.db.char.estimated_honor, "ORANGE"), L['You have 0 honor or not enough HKs, min = 15']))
 	end
 
 	reportBtn:SetText(L['Report'] .. ' ' .. (UnitIsPlayer("target") and UnitName("target") or ''))
@@ -154,9 +154,9 @@ end
 function GUI:PrepareGUI()
 	mainFrame = AceGUI:Create("Window")
 	mainFrame:Hide()
-	_G["HonorSpyGUI_MainFrame"] = mainFrame
-	tinsert(UISpecialFrames, "HonorSpyGUI_MainFrame")	-- allow ESC close
-	mainFrame:SetTitle(L["HonorSpy Standings"])
+	_G["RankCollectorGUI_MainFrame"] = mainFrame
+	tinsert(UISpecialFrames, "RankCollectorGUI_MainFrame")	-- allow ESC close
+	mainFrame:SetTitle(L["RankCollector Standings"])
 	mainFrame:SetWidth(600)
 	mainFrame:SetLayout("List")
 	mainFrame:EnableResize(false)
@@ -176,7 +176,7 @@ function GUI:PrepareGUI()
 	reportBtn:SetRelativeWidth(0.19)
 	reportBtn.text:SetFontObject("SystemFont_NamePlate")
 	reportBtn:SetCallback("OnClick", function()
-		HonorSpy:Report(UnitIsPlayer("target") and UnitName("target") or nil)
+		RankCollector:Report(UnitIsPlayer("target") and UnitName("target") or nil)
 	end)
 	playerStandingsGrp:AddChild(reportBtn)
 
@@ -253,22 +253,22 @@ function GUI:PrepareGUI()
 	statusLine:ClearAllPoints()
 	statusLine:SetPoint("BOTTOM", mainFrame.frame, "BOTTOM", 0, 15)
 
-	if (not HonorSpyGUI:IsHooked(HonorFrame, "OnUpdate")) then
-		HonorSpyGUI:SecureHookScript(HonorFrame, "OnUpdate", "UpdateHonorFrameText")
+	if (not RankCollectorGUI:IsHooked(HonorFrame, "OnUpdate")) then
+		RankCollectorGUI:SecureHookScript(HonorFrame, "OnUpdate", "UpdateHonorFrameText")
 	end
 end
 
-function HonorSpyGUI:UpdateHonorFrameText(setRankProgress)
+function RankCollectorGUI:UpdateHonorFrameText(setRankProgress)
 	-- rank progress percentage
 	local _, rankNumber = GetPVPRankInfo(UnitPVPRank("player"))
 	local rankProgress = GetPVPRankProgress(); -- This is a player only call
 	HonorFrameCurrentPVPRank:SetText(format("(%s %d) %d%%", RANK, rankNumber, rankProgress*100))
 	
 	-- today's honor
-	HonorFrameCurrentHKValue:SetText(format("%d "..colorize("(Honor: %d)", "NORMAL"), GetPVPSessionStats(), HonorSpy.db.char.estimated_honor - HonorSpy.db.char.original_honor))
+	HonorFrameCurrentHKValue:SetText(format("%d "..colorize("(Honor: %d)", "NORMAL"), GetPVPSessionStats(), RankCollector.db.char.estimated_honor - RankCollector.db.char.original_honor))
 	-- this week honor
 	local _, this_week_honor = GetPVPThisWeekStats();
-	HonorFrameThisWeekContributionValue:SetText(format("%d (%d)", this_week_honor, HonorSpy.db.char.estimated_honor))
+	HonorFrameThisWeekContributionValue:SetText(format("%d (%d)", this_week_honor, RankCollector.db.char.estimated_honor))
 end
 
 function colorize(str, colorOrClass)

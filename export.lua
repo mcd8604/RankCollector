@@ -1,4 +1,4 @@
-function HonorSpy:ExportCSV()
+function RankCollector:ExportCSV()
 	local _G = getfenv(0)
 	local PaneBackdrop  = {
 		bgFile = [[Interface\DialogFrame\UI-DialogBox-Background]],
@@ -41,7 +41,7 @@ function HonorSpy:ExportCSV()
 	local exportwindow = _G["ARLCopyFrame"]
 	local editbox = _G["ARLCopyEdit"]
 
-	local data = HonorSpy:BuildStandingsTable();
+	local data = RankCollector:BuildStandingsTable();
 	local text = "";
 	for _, row in pairs(data) do
 		text = ""
