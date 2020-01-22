@@ -5,7 +5,7 @@
 ## Notes-ruRU: Записывает PvP позиции всех игроков
 ## Notes-zhCN: PvP 荣誉监视榜,用于收集并监视服务器荣誉角色并排行
 
-## Author: mdemauro
+## Author: kakysha, mdemauro
 ## OptionalDeps: Ace3
 ## Version: 1.7.1
 
