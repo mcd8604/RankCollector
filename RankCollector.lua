@@ -375,7 +375,6 @@ function playerIsValid(player)
 		or not player.rank or type(player.rank) ~= "number"
 		or not player.class or not class_exist(player.class)
 		) then
-		print(format('Ignoring Player: %s)', player.name))
 		return false
 	end
 	return true
@@ -394,7 +393,6 @@ function store_player(playerName, player)
 	local player = table.copy(player);
 	local localPlayer = RankCollector.db.factionrealm.currentStandings[playerName];
 	if (localPlayer == nil or localPlayer.last_checked < player.last_checked) then
-		print(format('Storing Player: %s', playerName))
 		RankCollector.db.factionrealm.currentStandings[playerName] = player;
 		RankCollector:TestNextFakePlayer();
 	end
