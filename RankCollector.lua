@@ -113,6 +113,7 @@ function RankCollector:INSPECT_HONOR_UPDATE()
 			player.RP = math.ceil(player.rankProgress * 3000 + 2000)
 		end
 		lastPlayer = {name = inspectedPlayerName, honor = thisWeekHonor}
+		print(format('Inspected Player: %s', inspectedPlayerName))
 		store_player(inspectedPlayerName, player)
 		broadcast(self:Serialize(inspectedPlayerName, player))
 	--else
